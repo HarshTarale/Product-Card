@@ -4,21 +4,23 @@ const search= document.querySelector(".search");
 const content= document.querySelector(".card");
 
 
+function mens(){
+    cardData(0);
+}
+function womens(){
+    cardData(1);
+}
+function kidss(){
+    cardData(2);
+}
 
-
-
-
-
-
-
-
-const men=async()=>{
+const cardData=async(no)=>{
     content.innerHTML="";
 
     const url ="https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json" 
 const response = await fetch(url);
 const data =await response.json();
-const product =data.categories[0].category_products;
+const product =data.categories[no].category_products;
     
     product.filter(val=>{
         const div=document.createElement("div");
@@ -42,65 +44,65 @@ const product =data.categories[0].category_products;
     })}
 
 
-const women=async()=>{
-    content.innerHTML="";
-    const url ="https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json" 
-const response = await fetch(url);
-const data =await response.json();
-const product =data.categories[1].category_products;
+// const women=async()=>{
+//     content.innerHTML="";
+//     const url ="https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json" 
+// const response = await fetch(url);
+// const data =await response.json();
+// const product =data.categories[1].category_products;
     
-    product.filter(val=>{
-        const div=document.createElement("div");
-        div.setAttribute("class","hii")
+//     product.filter(val=>{
+//         const div=document.createElement("div");
+//         div.setAttribute("class","hii")
 
-        const substrac=val.compare_at_price-val.price;
-        const discount=substrac/val.compare_at_price*100;
-        const  discountValue=    Math.floor(discount);
-        div.innerHTML=`<img src="${val.image}">
+//         const substrac=val.compare_at_price-val.price;
+//         const discount=substrac/val.compare_at_price*100;
+//         const  discountValue=    Math.floor(discount);
+//         div.innerHTML=`<img src="${val.image}">
 
-                      <div class="title">
-                       <h2>${val.title}</h2>
-                       <ul><li>${val.vendor}</li></ul>
-                      </div>
-                       <span>
-                       <p class="spanP-1">Rs_${val.price}</p>
-                       <del> <p>${val.compare_at_price}</p></del>
-                       <p class="spanP-2">${discountValue} %Off</p>
-                       </span>
-                       <button class="btn">Add to Card</button>`;
-        content.appendChild(div);
-         })}
+//                       <div class="title">
+//                        <h2>${val.title}</h2>
+//                        <ul><li>${val.vendor}</li></ul>
+//                       </div>
+//                        <span>
+//                        <p class="spanP-1">Rs_${val.price}</p>
+//                        <del> <p>${val.compare_at_price}</p></del>
+//                        <p class="spanP-2">${discountValue} %Off</p>
+//                        </span>
+//                        <button class="btn">Add to Card</button>`;
+//         content.appendChild(div);
+//          })}
 
 
-const kids=async()=>{
-    content.innerHTML="";
-    const url ="https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json" 
-    const response = await fetch(url);
-    const data =await response.json();
-    const product =data.categories[2].category_products;
+// const kids=async()=>{
+//     content.innerHTML="";
+//     const url ="https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json" 
+//     const response = await fetch(url);
+//     const data =await response.json();
+//     const product =data.categories[2].category_products;
 
-    product.filter(val=>{
-        const div=document.createElement("div");
-        div.setAttribute("class","hii")
+//     product.filter(val=>{
+//         const div=document.createElement("div");
+//         div.setAttribute("class","hii")
 
-        const substrac=val.compare_at_price-val.price;
-        const discount=substrac/val.compare_at_price*100;
-        const  discountValue= Math.floor(discount);
+//         const substrac=val.compare_at_price-val.price;
+//         const discount=substrac/val.compare_at_price*100;
+//         const  discountValue= Math.floor(discount);
      
-        console.log(val.title)
-        div.innerHTML=`<img src="${val.image}">
-                      <div class="title">
-                         <h2>${val.title}</h2>
-                         <ul><li>${val.vendor}</li></ul>
-                      </div>
-                      <span>
-                         <p class="spanP-1">Rs_${val.price}</p>
-                         <del> <p>${val.compare_at_price}</p></del>
-                         <p class="spanP-2">${discountValue} %Off</p>
-                      </span>
-                         <button class="btn">Add to Card</button>`;
-        content.appendChild(div);
-     })};
+//         console.log(val.title)
+//         div.innerHTML=`<img src="${val.image}">
+//                       <div class="title">
+//                          <h2>${val.title}</h2>
+//                          <ul><li>${val.vendor}</li></ul>
+//                       </div>
+//                       <span>
+//                          <p class="spanP-1">Rs_${val.price}</p>
+//                          <del> <p>${val.compare_at_price}</p></del>
+//                          <p class="spanP-2">${discountValue} %Off</p>
+//                       </span>
+//                          <button class="btn">Add to Card</button>`;
+//         content.appendChild(div);
+//      })};
 
 
 
